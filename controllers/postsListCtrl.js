@@ -1,5 +1,8 @@
 const postsList = require(`./../data/posts`)
 
+// CONNESSIONE DATABASE
+const connection = require(`./../db/db`);
+
 // INDEX
 function index(req, res) {
     // copiamo la logica dell'index

@@ -1,4 +1,4 @@
-// MILESTONE 2
+
 const postsList = [
   {
     id: 1,
