@@ -3,7 +3,8 @@ const postsList = require(`./../data/posts`)
 // CONNESSIONE DATABASE
 const connection = require(`./../db/db`);
 
-// INDEX
+// INDEX DATI STATICI
+/*
 function index(req, res) {
     // copiamo la logica dell'index
 
@@ -23,6 +24,30 @@ function index(req, res) {
     // test funzionamento filtro
     res.json(oggettoListaPost)
     //res.send("Lista dei post");
+
+}
+*/
+
+// INDEX con dati da Database
+function index(req, res) {
+    // PREPARO LA QUERY
+    const sql = "SELECT * FROM posts";
+    // ESEGUO LA QUERY
+    connection.query(sql, (err, results) => {
+
+        if (err) {
+            console.error("Errore database:", err);
+            return res.status(500).json({
+                error: "Errore del server"
+            });
+        }
+
+        res.json({
+            numeroPost: results.length,
+            listaPost: results
+        });
+
+    });
 
 }
 
